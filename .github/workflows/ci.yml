@@ -1,0 +1,25 @@
+name: My Dummy CI Pipeline
+
+# 1. The Trigger: Tell the pipeline to run whenever code is pushed to Git
+on:
+  push:
+    branches:
+      - main
+
+# 2. The Jobs: What the server should actually do
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest # This spins up a temporary Linux server in the cloud
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3 # This step downloads your Git code to the server
+      
+      - name: Run Dummy Tests
+        run: |
+          echo "Running tests..."
+          echo "Simulating a successful test of app.py"
+          python app.py
+          
+      - name: Simulate Deployment
+        run: echo "Tests passed! Deploying to the live server..."
